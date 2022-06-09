@@ -22,11 +22,13 @@ extension StorageRequestUtils {
                                                StorageErrorConstants.identityIdIsEmpty.recoverySuggestion)
             }
 
-            if accessLevel != .protected {
-                return StorageError.validation(StorageErrorConstants.invalidAccessLevelWithTarget.field,
-                                               StorageErrorConstants.invalidAccessLevelWithTarget.errorDescription,
-                                               StorageErrorConstants.invalidAccessLevelWithTarget.recoverySuggestion)
-            }
+            /// this was giving issue when using custom uuid.
+            /// so need to pass targetIdentityId even when the access is private to override default uid
+            // if accessLevel != .protected {
+            //     return StorageError.validation(StorageErrorConstants.invalidAccessLevelWithTarget.field,
+            //                                    StorageErrorConstants.invalidAccessLevelWithTarget.errorDescription,
+            //                                    StorageErrorConstants.invalidAccessLevelWithTarget.recoverySuggestion)
+            // }
         }
 
         return nil
